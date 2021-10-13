@@ -1,0 +1,116 @@
+<template>
+  <div>
+    <Container>
+      <div class="journal-hero">
+        <h1 class="journal-header">
+          a wise person once said...
+        </h1>
+      </div>
+    </Container>
+    <g-link
+      v-for="edge in $page.projects.edges"
+      :key="edge.node.id"
+      :to="`/project/${edge.node.id}`"
+      class="journal-post"
+    >
+      <div
+        data-v-da896d1e=""
+        class="container journal"
+      >
+        <h2
+          class="journal-title"
+        >{{edge.node.title}}</h2>
+        <p
+          class="journal-excerpt"
+        >
+        {{edge.node.desc}}
+        </p>
+      </div>
+    </g-link>
+  </div>
+</template>
+
+<page-query>
+query {
+	projects: allStrapiProjects {
+    edges {
+      node {
+        title,
+        id,
+        desc
+      }
+    }
+  }
+}
+</page-query>
+
+<script>
+export default {
+  metaInfo: {
+    title: "Journal",
+  },
+};
+</script>
+<style scoped>
+.container.journal {
+  max-width: 720px;
+}
+
+.journal-hero {
+  padding: 4rem 0;
+  text-align: center;
+  color: var(--color-base-1);
+}
+
+.journal-header {
+  font-size: 3rem;
+  font-weight: 700;
+  padding: 0;
+  margin: 0;
+}
+
+.journal-post {
+  display: block;
+  padding: 2rem 0;
+  text-decoration: none;
+  transition: background 0.5s ease;
+}
+
+.journal-post > div {
+  transition: transform 0.5s ease;
+}
+
+.journal-post:hover {
+  background-color: var(--color-base-1);
+}
+
+.journal-post:hover > div {
+  transform: translateX(4rem);
+}
+
+.journal-post h1 {
+  margin: 0;
+  padding: 0;
+}
+
+.journal-title {
+  font-size: 2rem;
+  color: var(--color-contrast);
+}
+
+.journal-excerpt {
+  color: var(--color-contrast-1);
+}
+
+@media (min-width: 560px) {
+  .journal-post {
+    padding: 3rem 0;
+  }
+}
+
+@media (min-width: 860px) {
+  .journal-post {
+    padding: 5rem 0;
+  }
+}
+</style>
