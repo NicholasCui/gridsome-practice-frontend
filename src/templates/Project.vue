@@ -49,7 +49,9 @@ query ($id: ID!){
 export default {
   name: 'Project',
   metaInfo () {
-    title: this.$page.project.title
+    return {
+      title: this.$page.project.title
+    }
   }
 }
 </script>
