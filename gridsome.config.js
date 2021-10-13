@@ -10,14 +10,14 @@ module.exports = {
     {
       use: '@gridsome/source-strapi',
       options: {
-        apiURL: 'http://localhost:1337/',
+        apiURL: 'http://192.144.227.227:1337/',
         queryLimit: 1000,
-        contentTypes: ['projects', 'category']
+        contentTypes: ['project', 'category']
       }
     }
   ],
   templates: {
-    StrapiProjects: [
+    StrapiProject: [
       {
         path: '/project/:id',
         component: './src/templates/Project.vue'

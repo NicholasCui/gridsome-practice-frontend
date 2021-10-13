@@ -22,15 +22,15 @@
         </div>
       </div>
       <div class="content">
-        <template v-html="$page.project.content" />
-        <g-image style="width: 100%" :src="`${BASE_URL}${$page.project.cover[0].url}`"/>
+        <div v-html="mdToHtml($page.project.content)" />
+        <g-image style="width: 100%" :src="`${BASE_URL}${$page.project.cover.url}`"/>
       </div>
     </div>
   </div>
 </template>
 <page-query>
 query ($id: ID!){
-	project: strapiProjects(id: $id) {
+	project: strapiProject(id: $id) {
     id,
     title,
     created_at,
@@ -44,14 +44,27 @@ query ($id: ID!){
     }
   }
 }
-</page-query
+</page-query>
 <script>
+import MarkdownIt from 'markdown-it'
+
+const md = new MarkdownIt()
+
 export default {
   name: 'Project',
-  metaInfo () {
+  metaInfo() {
     return {
       title: this.$page.project.title
     }
+  },
+  methods: {
+    onClick () {
+      this.message = 'Here you go :)'
+    },
+    mdToHtml (markdown) {
+      return md.render(markdown)
+    }
   }
+
 }
 </script>

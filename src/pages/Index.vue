@@ -16,8 +16,9 @@
             class="project-link"
           >
             <g-image
+              class="thumbnail"
               :alt="edge.node.title"
-              :src="`${BASE_URL}${edge.node.cover[0].url}`"
+              :src="`${BASE_URL}${edge.node.cover.url}`"
             />
             <h3 class="project-title">{{edge.node.title}}</h3>
             <div class="categories">
@@ -52,7 +53,7 @@
 
 <page-query>
 query {
-	projects: allStrapiProjects {
+	projects: allStrapiProject {
     edges {
       node {
         title,
@@ -72,7 +73,7 @@ query {
 export default {
   metaInfo: {
     title: "Home",
-  },
+  }
 };
 </script>
 

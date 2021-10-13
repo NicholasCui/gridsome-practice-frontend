@@ -13,7 +13,7 @@ export default function (Vue, { router, head, isClient }) {
   Vue.mixin({
     data() {
       return {
-        BASE_URL: 'http://localhost:1337'
+        BASE_URL: 'http://192.144.227.227:1337'
       }
     }
   })

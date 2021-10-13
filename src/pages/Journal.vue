@@ -32,7 +32,7 @@
 
 <page-query>
 query {
-	projects: allStrapiProjects {
+	projects: allStrapiProject {
     edges {
       node {
         title,
