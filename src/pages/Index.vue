@@ -94,6 +94,7 @@ export default {
 }
 
 .thumbnail {
+  width: 2560px;
   height: 560px;
   -o-object-fit: cover;
   object-fit: cover;
